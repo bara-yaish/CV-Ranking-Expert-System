@@ -10,6 +10,7 @@ for line in file:
     requirements.append(re.split("\s", line))
 
 # Checking the education level by specifying the index
+
 if (requirements[3][0] == "Education:"):
     if(requirements[3][1] == "Diploma"):
         print("Diploma Found.")
