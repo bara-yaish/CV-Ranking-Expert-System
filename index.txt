@@ -1,0 +1,4 @@
+Age: 25
+Skills: 4
+Experience: Yes
+Education: Diploma
