@@ -1,3 +1,3 @@
 print("Hello World")
 
-print("Hi, I am Grace and im nub in coding. =)")
+print("Hi, I am Grace and im an amazing coder :D")
