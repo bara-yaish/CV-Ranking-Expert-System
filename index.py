@@ -1,1 +1,0 @@
-print("life is a bloody joke")
