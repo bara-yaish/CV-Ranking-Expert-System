@@ -1,1 +1,1 @@
-print("Hello World!")
+print("life is a bloody joke")
