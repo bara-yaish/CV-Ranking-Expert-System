@@ -1,4 +1,4 @@
 Age: 25
-Skills: 4
-Experience: Yes
+Skills: Communication, Equipment Handling, Medical Prep and Clean Up, Computer Skills, Research, Time Management, Empathy, Conflict Resolution
+Experience:
 Education: Diploma
