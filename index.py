@@ -1,7 +1,8 @@
 import re
 
 # Read the contents of index.txt file
-file = open("index.txt", "r")
+userinput = input('Enter your CV file name: ')
+file = open(userinput, "r")
 
 # Loop through each line of the index.txt file
 # Store the strings after each space (\s) in each line
