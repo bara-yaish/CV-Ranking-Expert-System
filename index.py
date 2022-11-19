@@ -6,15 +6,18 @@ file = open(userinput, "r")
 
 # Loop through each line of the index.txt file
 # Store the strings after each space (\s) in each line
-status = []
+status = ""
 requirements = []
 skills_content = ''
 skills_count = 0
 count = 0
 experience_count = 0
+name = ""
 for line in file:
     count += 1
     requirements.append(re.split("\s", line))
+    if (count == 1):
+        name = requirements[0][1] + " " + requirements[0][2]
     if (count == 5):
         skills_content = line
     if (count > 6):
@@ -59,6 +62,7 @@ if (re.findall('Empathy', skills_content)):
 if (re.findall('Conflict Resolution', skills_content)):
     skills_count += 1
 
+
 # if (skills_count > 4):
 #     print('Skilled')
 # else:
@@ -67,54 +71,67 @@ if (re.findall('Conflict Resolution', skills_content)):
 # The Rulings
 
 def isAgeOld():
-    if(requirements[2][0] == "Age:"):
-        if(int(requirements[2][1]) > 50):
-            status.append("Rejected")
+    global status
+    if (requirements[2][0] == "Age:"):
+        if (int(requirements[2][1]) > 50):
+            status = "Rejected"
             displayResults()
         else:
             checkRanking()
             displayResults()
 
+
 def checkRanking():
-    if(int(requirements[2][1]) < 27):
-        if(skills_count > 4):
-            if(requirements[3][1] == "Diploma"):
-                status.append("On Hold")
-            if(requirements[3][1] == "Bachelors"):
-                status.append("Prospect")
+    global status
+    if (int(requirements[2][1]) < 27):
+        if (skills_count > 4):
+            if (requirements[3][1] == "Diploma"):
+                status = "On Hold"
+            if (requirements[3][1] == "Bachelors"):
+                status = "Prospect"
             if (requirements[3][1] == "Masters"):
-                status.append("Approved")
-        elif(experience_count > 0):
-            status.append("Approved")
+                status = "Approved"
+        elif (experience_count > 0):
+            status = "Approved"
         else:
             if (requirements[3][1] == "Diploma"):
-                status.append("Rejected")
+                status = "Rejected"
             if (requirements[3][1] == "Bachelors"):
-                status.append("On Hold")
+                status = "On Hold"
             if (requirements[3][1] == "Masters"):
-                status.append("Prospect")
-    elif(experience_count > 0):
+                status = "Prospect"
+    elif (experience_count > 0):
         if (requirements[3][1] == "Diploma"):
-            status.append("On Hold")
+            status = "On Hold"
         if (requirements[3][1] == "Bachelors"):
-            status.append("Prospect")
+            status = "Prospect"
         if (requirements[3][1] == "Masters"):
-            status.append("Approved")
+            status = "Approved"
         if (requirements[3][1] == "PhD"):
-            status.append("Approved")
-    elif(skills_count > 4):
-        status.append("Prospect")
+            status = "Approved"
+    elif (skills_count > 4):
+        status = "Prospect"
     else:
         if (requirements[3][1] == "Diploma"):
-            status.append("Rejected")
+            status = "Rejected"
         if (requirements[3][1] == "Bachelors"):
-            status.append("On Hold")
+            status = "On Hold"
         if (requirements[3][1] == "Masters"):
-            status.append("Prospect")
+            status = "Prospect"
         if (requirements[3][1] == "PhD"):
-            status.append("Prospect")
+            status = "Prospect"
+
 
 def displayResults():
+    global status
     print(status)
 
+
 isAgeOld()
+
+# Write into the results file to store results of each candidate
+file1 = open("results.txt", "a")
+file1.write(name)
+file1.write("\nStatus: " + status)
+file1.write("\n\n")
+file1.close()
