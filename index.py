@@ -18,7 +18,6 @@ for line in file:
         skills_content = line
 
 # Checking the education level by specifying the index
-
 if (requirements[2][0] == "Age:"):
     if(int(requirements[2][1]) > 50):
         print("Old")
@@ -39,6 +38,7 @@ if (requirements[3][0] == "Education:"):
     else:
         print("Education level is Unknown")
 
+# Check how many skills the candidate has in the CV
 if (re.findall('Communication', skills_content)):
     skills_count += 1
 if (re.findall('Equipment Handling', skills_content)):
